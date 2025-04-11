@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover, collect, and trade premium digital art NFTs on the Ethereum blockchain">
+    <title>NFTverse | Premium Digital Art Marketplace</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="NFTverse | Premium Digital Art Marketplace">
+    <meta property="og:description" content="Discover, collect, and trade premium digital art NFTs on the Ethereum blockchain">
+    <meta property="og:image" content="assets/social-preview.jpg">
+    <meta property="og:url" content="https://nftverse.io">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #6e45e2;
+            --primary-dark: #5939c2;
+            --primary-light: #8e6eff;
+            --secondary: #88d3ce;
+            --accent: #ff6b6b;
+            --dark: #0f0f1a;
+            --darker: #0a0a12;
+            --dark-gray: #1e1e2e;
+            --light: #f8f9fa;
+            --light-gray: #e9ecef;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, .display-1, .display-2, .display-3, .display-4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 1200px;
+        }
+
+        /* Gradient Utilities */
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline;
+        }
+
+        /* Cards */
+        .nft-card {
+            background: rgba(30, 30, 50, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            overflow: hidden;
+        }
+
+        .nft-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(110, 69, 226, 0.2);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Buttons */
+        .btn-connect {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border: none;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            padding: 12px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-connect:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(110, 69, 226, 0.3);
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+        }
+
+        .btn-connect:active {
+            transform: translateY(0);
+        }
+
+        .btn-outline-light {
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-light:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Navbar */
+        .navbar {
+            padding: 20px 0;
+            transition: all 0.3s ease;
+            background-color: rgba(15, 15, 26, 0.98);
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar.scrolled {
+            padding: 12px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand img {
+            height: 32px;
+            margin-right: 10px;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            padding: 8px 16px !important;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            margin: 0 4px;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-link.active {
+            background: rgba(110, 69, 226, 0.15);
+            color: var(--primary-light) !important;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 140px 0 100px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(circle at 20% 50%, rgba(110, 69, 226, 0.15) 0%, rgba(15, 15, 26, 0) 50%);
+        }
+
+        /* Stats */
+        .stat-item {
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border-left: 3px solid var(--primary);
+        }
+
+        /* Countdown */
+        .countdown-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            min-width: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* NFT Image */
+        .nft-image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .nft-image {
+            transition: transform 0.5s ease;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+        }
+
+        .nft-card:hover .nft-image {
+            transform: scale(1.03);
+        }
+
+        /* Collection Grid */
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        /* Team */
+        .team-member {
+            text-align: center;
+        }
+
+        .team-member-img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid rgba(110, 69, 226, 0.3);
+            transition: all 0.3s ease;
+            margin-bottom: 16px;
+        }
+
+        .team-member:hover .team-member-img {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        /* Roadmap */
+        .roadmap-container {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .roadmap-container::before {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+
+        .roadmap-item {
+            position: relative;
+            padding-bottom: 40px;
+        }
+
+        .roadmap-item::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        .roadmap-date {
+            display: inline-block;
+            padding: 4px 12px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        /* FAQ */
+        .accordion-button {
+            background-color: rgba(255, 255, 255, 0.03);
+            color: var(--light);
+            font-weight: 500;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: rgba(110, 69, 226, 0.1);
+            color: var(--primary-light);
+        }
+
+        .accordion-button:focus {
+            box-shadow: 0 0 0 0.25rem rgba(110, 69, 226, 0.25);
+        }
+
+        /* Newsletter */
+        .newsletter-box {
+            background: linear-gradient(135deg, rgba(110, 69, 226, 0.1), rgba(136, 211, 206, 0.1));
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .newsletter-input {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            color: white !important;
+            padding: 14px 20px !important;
+        }
+
+        .newsletter-input:focus {
+            box-shadow: 0 0 0 0.25rem rgba(110, 69, 226, 0.25);
+            border-color: var(--primary) !important;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--darker);
+            padding: 60px 0 30px;
+        }
+
+        .footer-links h5 {
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-light);
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--light);
+            transition: all 0.3s ease;
+            margin-right: 10px;
+        }
+
+        .social-icon:hover {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 991.98px) {
+            .hero-section {
+                padding: 120px 0 80px;
+            }
+            
+            .display-4 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .hero-section {
+                padding: 100px 0 60px;
+            }
+            
+            .countdown-box {
+                min-width: 80px;
+                padding: 15px;
+            }
+        }
+
+        /* Utility Classes */
+        .text-gradient {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .bg-dark-gray {
+            background-color: var(--dark-gray);
+        }
+
+        .bg-darker {
+            background-color: var(--darker);
+        }
+
+        .opacity-75 {
+            opacity: 0.75;
+        }
+
+        .opacity-50 {
+            opacity: 0.5;
+        }
+
+        .cursor-pointer {
+            cursor: pointer;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--darker);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-light);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="assets/logo.svg" alt="NFTverse Logo" width="32" height="32">
+                NFTverse
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#collection">Explore</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#stats">Stats</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#roadmap">Roadmap</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                </ul>
+                <div class="d-flex ms-lg-3 mt-3 mt-lg-0">
+                    <button class="btn btn-connect me-2" id="connectWalletBtn">
+                        <i class="fas fa-wallet me-2"></i>Connect Wallet
+                    </button>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-light dropdown-toggle" type="button" id="networkDropdown" data-bs-toggle="dropdown">
+                            <i class="fas fa-ethereum me-2"></i>Ethereum
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="fab fa-ethereum me-2"></i>Ethereum</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fab fa-bitcoin me-2"></i>Polygon</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-link me-2"></i>Solana</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <span class="badge bg-dark-gray text-primary mb-3">10,000 UNIQUE NFTS</span>
+                    <h1 class="display-4 fw-bold mb-4">Discover & Collect <span class="text-gradient">Exclusive Digital Art</span></h1>
+                    <p class="lead mb-4 opacity-75">NFTverse is a premium collection of 10,000 algorithmically generated, high-quality NFTs with verified ownership on the Ethereum blockchain.</p>
+                    <div class="d-flex flex-wrap gap-3 mb-4">
+                        <button class="btn btn-connect btn-lg">
+                            <i class="fas fa-gem me-2"></i>Mint Now (0.08 ETH)
+                        </button>
+                        <button class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-eye me-2"></i>View Collection
+                        </button>
+                    </div>
+                    <div class="d-flex flex-wrap gap-3">
+                        <div class="stat-item">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-users me-2 text-primary"></i>
+                                <div>
+                                    <h5 class="mb-0">3,842</h5>
+                                    <small class="opacity-75">Collectors</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-chart-line me-2 text-primary"></i>
+                                <div>
+                                    <h5 class="mb-0">892 ETH</h5>
+                                    <small class="opacity-75">Volume Traded</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-fire me-2 text-primary"></i>
+                                <div>
+                                    <h5 class="mb-0">4.2K</h5>
+                                    <small class="opacity-75">Active Listings</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="nft-card p-3 floating">
+                        <div class="nft-image-container">
+                            <img src="assets/hero-nft.jpg" alt="NFT Preview" class="img-fluid rounded-3 nft-image">
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <div>
+                                <h5 class="mb-0">Cosmic Explorer #4271</h5>
+                                <small class="opacity-75">By NFTverse</small>
+                            </div>
+                            <div class="text-end">
+                                <small class="d-block opacity-75">Current Bid</small>
+                                <h5 class="mb-0">0.52 ETH</h5>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between mt-3 pt-3 border-top border-dark">
+                            <div>
+                                <small class="opacity-75">Ends In</small>
+                                <h6 class="mb-0">12h 43m</h6>
+                            </div>
+                            <button class="btn btn-sm btn-connect">Place Bid</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="py-5 bg-dark-gray">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h5 class="text-uppercase opacity-50 mb-3">Trusted By</h5>
+            </div>
+            <div class="d-flex flex-wrap justify-content-center align-items-center gap-5">
+                <img src="assets/partner-opensea.svg" alt="OpenSea" height="30" class="opacity-50 hover-opacity-100 cursor-pointer">
+                <img src="assets/partner-coinbase.svg" alt="Coinbase" height="30" class="opacity-50 hover-opacity-100 cursor-pointer">
+                <img src="assets/partner-binance.svg" alt="Binance" height="30" class="opacity-50 hover-opacity-100 cursor-pointer">
+                <img src="assets/partner-metamask.svg" alt="MetaMask" height="30" class="opacity-50 hover-opacity-100 cursor-pointer">
+                <img src="assets/partner-etherscan.svg" alt="Etherscan" height="30" class="opacity-50 hover-opacity-100 cursor-pointer">
+            </div>
+        </div>
+    </section>
+
+    <!-- Collection Section -->
+    <section id="collection" class="py-5">
+        <div class="container py-4">
+            <div class="d-flex justify-content-between align-items-center mb-5">
+                <div>
+                    <h2 class="fw-bold mb-2">Featured Collection</h2>
+                    <p class="opacity-75 mb-0">Discover the rarest NFTs in our premium collection</p>
+                </div>
+                <div>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-light dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown">
+                            <i class="fas fa-sort me-2"></i>Sort By
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">Recently Added</a></li>
+                            <li><a class="dropdown-item" href="#">Price: Low to High</a></li>
+                            <li><a class="dropdown-item" href="#">Price: High to Low</a></li>
+                            <li><a class="dropdown-item" href="#">Most Viewed</a></li>
+                            <li><a class="dropdown-item" href="#">Rarity</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="collection-grid">
+                <!-- NFT Item 1 -->
+                <div class="nft-card p-3">
+                    <div class="nft-image-container mb-3">
+                        <img src="assets/nft-1.jpg" alt="Cyber Punk NFT" class="img-fluid rounded-3 nft-image">
+                        <div class="position-absolute bottom-0 end-0 m-2">
+                            <span class="badge bg-dark"><i class="fas fa-ethereum me-1"></i>0.25</span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h5 class="mb-1">Cyber Punk #1024</h5>
+                            <small class="opacity-75">Owned by <a href="#" class="text-primary">@cryptoking</a></small>
+                        </div>
+                        <div class="text-end">
+                            <small class="d-block opacity-75">Last sale</small>
+                            <small class="text-success">0.18 ETH</small>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between mt-3 pt-3 border-top border-dark">
+                        <button class="btn btn-sm btn-outline-light w-100 me-2">
+                            <i class="far fa-heart me-1"></i> 124
+                        </button>
+                        <button class="btn btn-sm btn-connect w-100">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- NFT Item 2 -->
+                <div class="nft-card p-3">
+                    <div class="nft-image-container mb-3">
+                        <img src="assets/nft-2.jpg" alt="Meta Ape NFT" class="img-fluid rounded-3 nft-image">
+                        <div class="position-absolute bottom-0 end-0 m-2">
+                            <span class="badge bg-dark"><i class="fas fa-ethereum me-1"></i>0.35</span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h5 class="mb-1">Meta Ape #2048</h5>
+                            <small class="opacity-75">Owned by <a href="#" class="text-primary">@nftcollector</a></small>
+                        </div>
+                        <div class="text-end">
+                            <small class="d-block opacity-75">Last sale</small>
+                            <small class="text-success">0.28 ETH</small>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between mt-3 pt-3 border-top border-dark">
+                        <button class="btn btn-sm btn-outline-light w-100 me-2">
+                            <i class="far fa-heart me-1"></i> 89
+                        </button>
+                        <button class="btn btn-sm btn-connect w-100">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- NFT Item 3 -->
+                <div class="nft-card p-3">
+                    <div class="nft-image-container mb-3">
+                        <img src="assets/nft-3.jpg" alt="Pixel Wizard NFT" class="img-fluid rounded-3 nft-image">
+                        <div class="position-absolute bottom-0 end-0 m-2">
+                            <span class="badge bg-dark"><i class="fas fa-ethereum me-1"></i>0.45</span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h5 class="mb-1">Pixel Wizard #4096</h5>
+                            <small class="opacity-75">Owned by <a href="#" class="text-primary">@wizardfan</a></small>
+                        </div>
+                        <div class="text-end">
+                            <small class="d-block opacity-75">Last sale</small>
+                            <small class="text-success">0.32 ETH</small>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between mt-3 pt-3 border-top border-dark">
+                        <button class="btn btn-sm btn-outline-light w-100 me-2">
+                            <i class="far fa-heart me-1"></i> 156
+                        </button>
+                        <button class="btn btn-sm btn-connect w-100">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- NFT Item 4 -->
+                <div class="nft-card p-3">
+                    <div class="nft-image-container mb-3">
+                        <img src="assets/nft-4.jpg" alt="Digital Demon NFT" class="img-fluid rounded-3 nft-image">
+                        <div class="position-absolute bottom-0 end-0 m-2">
+                            <span class="badge bg-dark"><i class="fas fa-ethereum me-1"></i>0.55</span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h5 class="mb-1">Digital Demon #8192</h5>
+                            <small class="opacity-75">Owned by <a href="#" class="text-primary">@demonhunter</a></small>
+                        </div>
+                        <div class="text-end">
+                            <small class="d-block opacity-75">Last sale</small>
+                            <small class="text-success">0.42 ETH</small>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between mt-3 pt-3 border-top border-dark">
+                        <button class="btn btn-sm btn-outline-light w-100 me-2">
+                            <i class="far fa-heart me-1"></i> 72
+                        </button>
+                        <button class="btn btn-sm btn-connect w-100">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <button class="btn btn-outline-light btn-lg px-5">
+                    <i class="fas fa-images me-2"></i>View All Collection
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="py-5 bg-darker">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold mb-3">Collection Stats</h2>
+                <p class="opacity-75">Real-time data and analytics for our NFT collection</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="nft-card p-4 text-center">
+                        <div class="display-4 fw-bold text-gradient mb-2">10,000</div>
+                        <h5>Total Items</h5>
+                        <small class="opacity-75">Unique NFTs in collection</small>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="nft-card p-4 text-center">
+                        <div class="display-4 fw-bold text-gradient mb-2">3,842</div>
+                        <h5>Owners</h5>
+                        <small class="opacity-75">Unique wallet holders</small>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="nft-card p-4 text-center">
+                        <div class="display-4 fw-bold text-gradient mb-2">892</div>
+                        <h5>ETH Volume</h5>
+                        <small class="opacity-75">Total traded volume</small>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="nft-card p-4 text-center">
+                        <div class="display-4 fw-bold text-gradient mb-2">0.42</div>
+                        <h5>Floor Price</h5>
+                        <small class="opacity-75">Current minimum price</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="nft-card p-4 mt-4">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h4 class="mb-3">Rarity Distribution</h4>
+                        <p class="opacity-75">Our collection features a carefully balanced rarity distribution to ensure fair value for all collectors.</p>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><span class="text-primary me-2">●</span> Common: 60% of collection</li>
+                            <li class="mb-2"><span class="text-primary me-2">●</span> Rare: 25% of collection</li>
+                            <li class="mb-2"><span class="text-primary me-2">●</span> Epic: 10% of collection</li>
+                            <li><span class="text-primary me-2">●</span> Legendary: 5% of collection</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="assets/rarity-chart.svg" alt="Rarity Chart" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="py-5">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold mb-3">Project Roadmap</h2>
+                <p class="opacity-75">Our strategic vision and development milestones</p>
+            </div>
+            
+            <div class="roadmap-container">
+                <!-- Phase 1 -->
+                <div class="roadmap-item">
+                    <div class="roadmap-date">Q1 2023</div>
+                    <div class="nft-card p-4 h-100">
+                        <h4><i class="fas fa-rocket me-2 text-primary"></i>Project Launch</h4>
+                        <ul class="mt-3 ps-3">
+                            <li class="mb-2">Concept & Art Development</li>
+                            <li class="mb-2">Core Team Formation</li>
+                            <li class="mb-2">Smart Contract Development</li>
+                            <li>Website & Platform Design</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Phase 2 -->
+                <div class="roadmap-item">
+                    <div class="roadmap-date">Q2 2023</div>
+                    <div class="nft-card p-4 h-100">
+                        <h4><i class="fas fa-gem me-2 text-primary"></i>Presale & Minting</h4>
+                        <ul class="mt-3 ps-3">
+                            <li class="mb-2">Community Building</li>
+                            <li class="mb-2">Whitelist Registration</li>
+                            <li class="mb-2">Exclusive Presale Event</li>
+                            <li>Public Minting Launch</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Phase 3 -->
+                <div class="roadmap-item">
+                    <div class="roadmap-date">Q3 2023</div>
+                    <div class="nft-card p-4 h-100">
+                        <h4><i class="fas fa-store me-2 text-primary"></i>Marketplace Integration</h4>
+                        <ul class="mt-3 ps-3">
+                            <li class="mb-2">Secondary Market Listings</li>
+                            <li class="mb-2">Rarity Tools Integration</li>
+                            <li class="mb-2">First Community Airdrop</li>
+                            <li>Holder Benefits Program</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Phase 4 -->
+                <div class="roadmap-item">
+                    <div class="roadmap-date">Q4 2023</div>
+                    <div class="nft-card p-4 h-100">
+                        <h4><i class="fas fa-globe me-2 text-primary"></i>Metaverse Expansion</h4>
+                        <ul class="mt-3 ps-3">
+                            <li class="mb-2">3D NFT Versions</li>
+                            <li class="mb-2">Virtual Gallery Launch</li>
+                            <li class="mb-2">DAO Implementation</li>
+                            <li>Metaverse Land Acquisition</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-5 bg-darker">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold mb-3">Meet The Team</h2>
+                <p class="opacity-75">The talented professionals behind NFTverse</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="team-member text-center">
+                        <img src="assets/team-1.jpg" alt="John Crypto" class="team-member-img mb-3">
+                        <h5 class="mb-1">John Crypto</h5>
+                        <small class="d-block text-primary mb-2">Founder & CEO</small>
+                        <p class="small opacity-75">Blockchain expert with 8+ years in crypto</p>
+                        <div class="d-flex justify-content-center gap-2">
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-icon"><i class="fas fa-globe"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="team-member text-center">
+                        <img src="assets/team-2.jpg" alt="Sarah Art" class="team-member-img mb-3">
+                        <h5 class="mb-1">Sarah Art</h5>
+                        <small class="d-block text-primary mb-2">Creative Director</small>
+                        <p class="small opacity-75">Digital artist with 10+ years experience</p>
+                        <div class="d-flex justify-content-center gap-2">
+                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-dribbble"></i></a>
+                            <a href="#" class="social-icon"><i class="fas fa-globe"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="team-member text-center">
+                        <img src="assets/team-3.jpg" alt="Mike Growth" class="team-member-img mb-3">
+                        <h5 class="mb-1">Mike Growth</h5>
+                        <small class="d-block text-primary mb-2">Marketing Director</small>
+                        <p class="small opacity-75">Crypto marketing specialist</p>
+                        <div class="d-flex justify-content-center gap-2">
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-icon"><i class="fas fa-globe"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="team-member text-center">
+                        <img src="assets/team-4.jpg" alt="Lisa Connect" class="team-member-img mb-3">
+                        <h5 class="mb-1">Lisa Connect</h5>
+                        <small class="d-block text-primary mb-2">Community Manager</small>
+                        <p class="small opacity-75">Building engaged communities since 2017</p>
+                        <div class="d-flex justify-content-center gap-2">
+                            <a href="#" class="social-icon"><i class="fab fa-discord"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-telegram"></i></a>
+                            <a href="#" class="social-icon"><i class="fas fa-globe"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <button class="btn btn-outline-light px-5">
+                    <i class="fas fa-users me-2"></i>Join Our Team
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-5">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold mb-3">Frequently Asked Questions</h2>
+                <p class="opacity-75">Find answers to common questions about NFTverse</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="accordion" id="faqAccordion">
+                        <!-- FAQ Item 1 -->
+                        <div class="accordion-item nft-card border-0 mb-3">
+                            <h3 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed bg-transparent text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                    What is an NFT and how does it work?
+                                </button>
+                            </h3>
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>NFT stands for Non-Fungible Token. It's a unique digital asset that represents ownership of a specific item or piece of content, stored on a blockchain. Unlike cryptocurrencies like Bitcoin which are identical and interchangeable, each NFT is unique and can't be exchanged on a one-to-one basis.</p>
+                                    <p>NFTverse NFTs are stored on the Ethereum blockchain, which provides a secure and transparent record of ownership. When you purchase an NFT from our collection, you're buying a unique token that proves your ownership of that specific digital artwork.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ Item 2 -->
+                        <div class="accordion-item nft-card border-0 mb-3">
+                            <h3 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed bg-transparent text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                    How do I mint an NFT from NFTverse?
+                                </button>
+                            </h3>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>To mint an NFT from our collection:</p>
+                                    <ol>
+                                        <li>Connect your Ethereum-compatible wallet (like MetaMask) to our website</li>
+                                        <li>Ensure you have enough ETH in your wallet to cover the mint price and gas fees</li>
+                                        <li>Click the "Mint Now" button during the minting period</li>
+                                        <li>Select the number of NFTs you wish to mint (maximum 10 per transaction)</li>
+                                        <li>Confirm the transaction in your wallet</li>
+                                        <li>After the transaction is confirmed, your NFTs will appear in your wallet</li>
+                                    </ol>
+                                    <p>You can then view your NFTs on OpenSea or other compatible marketplaces.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ Item 3 -->
+                        <div class="accordion-item nft-card border-0 mb-3">
+                            <h3 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed bg-transparent text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                    What wallets are supported for minting?
+                                </button>
+                            </h3>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>We support all Ethereum-compatible wallets including:</p>
+                                    <ul>
+                                        <li>MetaMask (Browser extension and mobile app)</li>
+                                        <li>Coinbase Wallet</li>
+                                        <li>Trust Wallet</li>
+                                        <li>WalletConnect compatible wallets</li>
+                                        <li>Ledger (via MetaMask)</li>
+                                        <li>Trezor (via MetaMask)</li>
+                                    </ul>
+                                    <p>For the best experience, we recommend using MetaMask. Make sure your wallet is connected to the Ethereum Mainnet before minting.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ Item 4 -->
+                        <div class="accordion-item nft-card border-0 mb-3">
+                            <h3 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed bg-transparent text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                                    What is the mint price and supply?
+                                </button>
+                            </h3>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>NFTverse consists of 10,000 unique NFTs with the following pricing structure:</p>
+                                    <ul>
+                                        <li><strong>Presale (Whitelist only):</strong> 0.05 ETH per NFT (limit 5 per wallet)</li>
+                                        <li><strong>Public Sale:</strong> 0.08 ETH per NFT (limit 10 per transaction)</li>
+                                    </ul>
+                                    <p>There will be a total of 2,000 NFTs available during the presale and 8,000 during the public sale. All NFTs are randomly generated at the time of minting.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ Item 5 -->
+                        <div class="accordion-item nft-card border-0 mb-3">
+                            <h3 class="accordion-header" id="headingFive">
+                                <button class="accordion-button collapsed bg-transparent text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive">
+                                    What benefits do NFT holders receive?
+                                </button>
+                            </h3>
+                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>NFTverse holders enjoy several benefits:</p>
+                                    <ul>
+                                        <li>Access to exclusive holder-only Discord channels</li>
+                                        <li>Participation in community governance votes</li>
+                                        <li>Eligibility for periodic airdrops of new NFTs</li>
+                                        <li>Early access to future NFTverse collections</li>
+                                        <li>Commercial usage rights for your NFTs</li>
+                                        <li>Invitations to real-world and virtual events</li>
+                                        <li>Staking rewards (coming Q3 2023)</li>
+                                    </ul>
+                                    <p>Additional benefits will be announced as we progress through our roadmap.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-5 bg-darker">
+        <div class="container py-4">
+            <div class="newsletter-box p-5">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 mb-4 mb-lg-0">
+                        <h3 class="fw-bold mb-3">Stay Updated</h3>
+                        <p class="opacity-75">Subscribe to our newsletter for the latest drops, announcements, and exclusive offers.</p>
+                        <div class="d-flex gap-3 mt-4">
+                            <a href="#" class="social-icon"><i class="fab fa-discord"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <form id="newsletterForm">
+                            <div class="input-group mb-3">
+                                <input type="email" class="form-control newsletter-input" placeholder="Your email address" required>
+                                <button class="btn btn-connect" type="submit">Subscribe</button>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="consentCheck" required>
+                                <label class="form-check-label small opacity-75" for="consentCheck">
+                                    I agree to receive marketing emails from NFTverse
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <a class="navbar-brand mb-3" href="#">
+                        <img src="assets/logo.svg" alt="NFTverse Logo" width="32" height="32">
+                        NFTverse
+                    </a>
+                    <p class="opacity-75">The premier destination for exclusive digital art NFTs on the Ethereum blockchain.</p>
+                    <div class="d-flex gap-3 mt-4">
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-medium"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4">
+                    <div class="footer-links">
+                        <h5>Marketplace</h5>
+                        <ul>
+                            <li><a href="#">All NFTs</a></li>
+                            <li><a href="#">Art</a></li>
+                            <li><a href="#">Collectibles</a></li>
+                            <li><a href="#">Photography</a></li>
+                            <li><a href="#">Virtual Worlds</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4">
+                    <div class="footer-links">
+                        <h5>Company</h5>
+                        <ul>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Roadmap</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Press</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4">
+                    <div class="footer-links">
+                        <h5>Resources</h5>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Platform Status</a></li>
+                            <li><a href="#">Partners</a></li>
+                            <li><a href="#">Gas-Free Marketplace</a></li>
+                            <li><a href="#">Taxes</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4">
+                    <div class="footer-links">
+                        <h5>Legal</h5>
+                        <ul>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Copyright Policy</a></li>
+                            <li><a href="#">Smart Contract</a></li>
+                            <li><a href="#">Disclaimer</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-top border-dark mt-5 pt-4">
+                <div class="row align-items-center">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <p class="mb-0 small opacity-75">© 2023 NFTverse. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <div class="d-flex flex-wrap justify-content-center justify-content-md-end gap-3">
+                            <a href="#" class="small opacity-75">Cookie Settings</a>
+                            <a href="#" class="small opacity-75">Do Not Sell My Info</a>
+                            <a href="#" class="small opacity-75">Bug Bounty</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.8.0/dist/web3.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Update URL without page reload
+                    if (history.pushState) {
+                        history.pushState(null, null, this.getAttribute('href'));
+                    } else {
+                        location.hash = this.getAttribute('href');
+                    }
+                }
+            });
+        });
+
+        // Wallet connection functionality
+        const connectWalletBtn = document.getElementById('connectWalletBtn');
+        
+        // Check if Web3 is injected
+        if (typeof window.ethereum !== 'undefined') {
+            // Ethereum user detected
+            connectWalletBtn.addEventListener('click', connectWallet);
+        } else {
+            // No Ethereum provider detected
+            connectWalletBtn.addEventListener('click', () => {
+                alert('Please install MetaMask or another Ethereum wallet to connect.');
+                window.open('https://metamask.io/download.html', '_blank');
+            });
+        }
+        
+        async function connectWallet() {
+            try {
+                connectWalletBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin me-2"></i>Connecting...';
+                connectWalletBtn.disabled = true;
+                
+                // Request account access
+                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                const account = accounts[0];
+                
+                // Get shortened address
+                const shortenedAddress = `${account.substring(0, 6)}...${account.substring(38)}`;
+                
+                // Update button
+                connectWalletBtn.innerHTML = `<i class="fab fa-ethereum me-2"></i>${shortenedAddress}`;
+                connectWalletBtn.classList.remove('btn-primary');
+                connectWalletBtn.classList.add('btn-success');
+                
+                // Add network switch button if not on Ethereum Mainnet
+                checkNetwork();
+                
+                // Listen for account changes
+                window.ethereum.on('accountsChanged', (newAccounts) => {
+                    if (newAccounts.length === 0) {
+                        // Wallet disconnected
+                        resetWalletButton();
+                    } else {
+                        // Account changed
+                        const newShortenedAddress = `${newAccounts[0].substring(0, 6)}...${newAccounts[0].substring(38)}`;
+                        connectWalletBtn.innerHTML = `<i class="fab fa-ethereum me-2"></i>${newShortenedAddress}`;
+                    }
+                });
+                
+                // Listen for chain changes
+                window.ethereum.on('chainChanged', () => {
+                    window.location.reload();
+                });
+                
+            } catch (error) {
+                console.error(error);
+                resetWalletButton();
+                
+                if (error.code === 4001) {
+                    // User rejected request
+                    alert('Please connect your wallet to continue.');
+                } else {
+                    alert('An error occurred. Please try again.');
+                }
+            }
+        }
+        
+        function resetWalletButton() {
+            connectWalletBtn.innerHTML = '<i class="fas fa-wallet me-2"></i>Connect Wallet';
+            connectWalletBtn.classList.remove('btn-success');
+            connectWalletBtn.classList.add('btn-primary');
+            connectWalletBtn.disabled = false;
+        }
+        
+        async function checkNetwork() {
+            // Check if the user is on Ethereum Mainnet
+            const chainId = await window.ethereum.request({ method: 'eth_chainId' });
+            
+            // Ethereum Mainnet chain ID is 0x1
+            if (chainId !== '0x1') {
+                const networkDropdown = document.getElementById('networkDropdown');
+                networkDropdown.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i>Wrong Network';
+                networkDropdown.classList.remove('btn-outline-light');
+                networkDropdown.classList.add('btn-warning');
+            }
+        }
+        
+        // Newsletter form submission
+        const newsletterForm = document.getElementById('newsletterForm');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const emailInput = this.querySelector('input[type="email"]');
+                if (emailInput.value) {
+                    // Show success message
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    submitBtn.innerHTML = '<i class="fas fa-check me-2"></i>Subscribed!';
+                    submitBtn.classList.remove('btn-connect');
+                    submitBtn.classList.add('btn-success');
+                    
+                    // Reset form
+                    setTimeout(() => {
+                        emailInput.value = '';
+                        submitBtn.innerHTML = 'Subscribe';
+                        submitBtn.classList.remove('btn-success');
+                        submitBtn.classList.add('btn-connect');
+                    }, 2000);
+                }
+            });
+        }
+        
+        // Initialize tooltips
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    </script>
+</body>
+</html>
