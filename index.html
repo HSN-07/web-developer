@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hassan Designs | Premium HTML/CSS Templates</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Add this link for your brand logo in the browser tab -->
+<link rel="icon" href="https://via.placeholder.com/50" type="image/x-icon">
+<style>
+:root {
+  --primary: #2563eb;
+  --secondary: #1e40af;
+  --accent: #3b82f6;
+  --light: #f8fafc;
+  --dark: #0f172a;
+  --gray: #64748b;
+  --text-dark: #0f172a;
+  --text-light: #f8fafc;
+}
+
+/* Dark Mode Variables */
+[data-theme="dark"] {
+  --primary: #1a1a2e;
+  --secondary: #4ecdc4;
+  --dark: #121212;
+  --light: #1e1e1e;
+  --text-dark: #f8f9fa;
+  --text-light: #e9ecef;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--light);
+  color: var(--text-dark);
+  line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  padding: 2rem 0;
+  text-align: center;
+  position: relative;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-img-container {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.profile-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.badge {
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  background-color: var(--accent);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.logo {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.logo-img {
+  height: 40px;
+  width: auto;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.social-links a {
+  color: white;
+  font-size: 1.5rem;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.social-links a:hover {
+  color: var(--accent);
+  transform: translateY(-3px);
+}
+
+nav {
+  background-color: var(--dark);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 2rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+nav a:hover {
+  color: var(--accent);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+section {
+  margin-bottom: 3rem;
+}
+
+h2 {
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background-color: var(--accent);
+}
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.service-card {
+  background-color: var(--light);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.service-card h3 {
+  color: var(--secondary);
+  margin-bottom: 1rem;
+}
+
+/* Portfolio Styles */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.portfolio-item {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 250px;
+}
+
+.portfolio-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.portfolio-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 1.5rem;
+  transform: translateY(100%);
+  transition: transform 0.3s;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+  transform: translateY(0);
+}
+
+.portfolio-item:hover img {
+  transform: scale(1.05);
+}
+
+.view-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.view-btn:hover {
+  background: var(--primary);
+}
+
+/* Project Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.modal-content {
+  background-color: var(--light);
+  margin: 5% auto;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 800px;
+  width: 90%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  color: var(--gray);
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-btn:hover {
+  color: var(--primary);
+}
+
+.project-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.project-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.project-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.project-description {
+  grid-column: 1 / -1;
+}
+
+.project-features ul {
+  list-style-type: none;
+}
+
+.project-features li {
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.project-features li:before {
+  content: '✓';
+  color: var(--accent);
+  position: absolute;
+  left: 0;
+}
+
+.project-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.project-btn {
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.primary-btn {
+  background-color: var(--primary);
+  color: white;
+}
+
+.primary-btn:hover {
+  background-color: var(--secondary);
+}
+
+.secondary-btn {
+  background-color: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.secondary-btn:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* Testimonial Styles */
+.testimonials {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+  scrollbar-width: thin;
+}
+
+.testimonial-card {
+  min-width: 300px;
+  background: var(--light);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.quote {
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.client-info {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.client-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 1rem;
+  object-fit: cover;
+}
+
+/* Pricing Styles */
+.pricing-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.pricing-card {
+  background: var(--light);
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.pricing-card:hover {
+  transform: translateY(-10px);
+}
+
+.price {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 1rem 0;
+  color: var(--primary);
+}
+
+.price span {
+  font-size: 1rem;
+  color: var(--gray);
+}
+
+.pricing-card ul {
+  list-style: none;
+  margin: 1.5rem 0;
+  text-align: left;
+}
+
+.pricing-card li {
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.pricing-card li:before {
+  content: '✓';
+  color: var(--accent);
+  position: absolute;
+  left: 0;
+}
+
+/* Skills Styles */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.skill-item {
+  padding: 1.5rem;
+  background: var(--light);
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.skill-item:hover {
+  transform: translateY(-5px);
+}
+
+.skill-item i {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+/* Newsletter Styles */
+.newsletter-container {
+  text-align: center;
+  padding: 3rem;
+  background: var(--primary);
+  color: white;
+  border-radius: 8px;
+}
+
+.newsletter-form {
+  display: flex;
+  max-width: 500px;
+  margin: 1rem auto 0;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  font-size: 1rem;
+}
+
+.newsletter-form button {
+  padding: 0 1.5rem;
+  background: var(--dark);
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+.newsletter-form button:hover {
+  background: var(--secondary);
+}
+
+/* Stats Section */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem;
+  text-align: center;
+}
+
+.stat-item {
+  padding: 1.5rem;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+/* Contact Styles */
+.contact-info {
+  background-color: var(--light);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.contact-info p {
+  margin-bottom: 1rem;
+}
+
+.contact-info a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+form input,
+form select,
+form textarea {
+  padding: 0.8rem;
+  border: 1px solid var(--gray);
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: var(--light);
+  color: var(--text-dark);
+  transition: border-color 0.3s;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+form button {
+  background-color: var(--primary);
+  color: white;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form button:hover {
+  background-color: var(--secondary);
+}
+
+footer {
+  background-color: var(--dark);
+  color: white;
+  text-align: center;
+  padding: 2rem 0;
+  margin-top: 2rem;
+}
+
+.dark-mode-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: var(--secondary);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 50px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.3s;
+}
+
+.dark-mode-toggle:hover {
+  transform: scale(1.05);
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  border: none;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 99;
+  transition: all 0.3s;
+}
+
+.scroll-to-top:hover {
+  background: var(--secondary);
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .header-content {
+    flex-direction: column;
+  }
+  
+  .services, .portfolio-grid, .pricing-cards, .stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .profile-img {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .newsletter-form {
+    flex-direction: column;
+  }
+  
+  .newsletter-form input,
+  .newsletter-form button {
+    width: 100%;
+    border-radius: 4px;
+  }
+  
+  .newsletter-form button {
+    margin-top: 0.5rem;
+  }
+  
+  .project-details {
+    grid-template-columns: 1fr;
+  }
+  
+  .project-actions {
+    flex-direction: column;
+  }
+  
+  .project-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Animation classes */
+.animate-fade {
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+.delay-1 {
+  animation-delay: 0.3s;
+}
+
+.delay-2 {
+  animation-delay: 0.6s;
+}
+
+.delay-3 {
+  animation-delay: 0.9s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="header-content">
+      <div class="profile-img-container animate-fade">
+        <img src="photoS/SNH.jpg"  class="profile-image">
+        <div class="badge"></div>
+      </div>
+      <div class="animate-fade delay-1">
+        <div class="logo">
+          <!-- Added brand logo -->
+         
+          Hassan Designs
+        </div>
+        <div class="tagline">Premium HTML/CSS Templates & Themes</div>
+        <div class="social-links">
+          <a href="https://snapchat.com/in/hy07my" aria-label="Snapchat" target="_blank"><i class="fab fa-snapchat"></i></a>
+          <a href="https://Instagram.com/hsn07n" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+          <a href="#" aria-label="Codepen"><i class="fab fa-codepen"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main class="container">
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="services">
+      <div class="service-card animate-fade delay-1">
+        <h3>HTML Templates</h3>
+        <p>Responsive, modern HTML templates for any business need. Fully customizable and SEO-friendly.</p>
+      </div>
+      <div class="service-card animate-fade delay-2">
+        <h3>CSS Themes</h3>
+        <p>Beautiful CSS themes that can transform any website with minimal integration effort.</p>
+      </div>
+      <div class="service-card animate-fade delay-3">
+        <h3>UI/UX Design</h3>
+        <p>Custom user interface and experience design tailored to your brand and audience.</p>
+      </div>
+    </div>
+  </section>
+
+ <!-- In your portfolio section, replace the existing portfolio items with this: -->
+<section id="portfolio">
+  <h2>Our Work</h2>
+  <div class="portfolio-grid">
+    <div class="portfolio-item animate-fade">
+      <img src="photos/Modern Business Template.jpg" alt="Modern Business Template">
+      <div class="portfolio-overlay">
+        <h3>Modern Business Template</h3>
+        <a href="file:///C:/Users/user/OneDrive/Desktop/HTML-CSS/LAW%20PLATFROM.HTML" class="view-btn" target="_blank">View Project</a>
+      </div>
+    </div>
+    <div class="portfolio-item animate-fade delay-1">
+      <img src="photos/NFL1.jpg" alt="E-commerce Theme">
+      <div class="portfolio-overlay">
+        <h3>E-commerce Theme</h3>
+        <a href="file:///C:/Users/user/OneDrive/Desktop/HTML-CSS/CODE.HTML" class="view-btn" target="_blank">View Project</a>
+      </div>
+    </div>
+    <div class="portfolio-item animate-fade delay-2">
+      <img src="photos/Portfolio Template.avif" alt="Portfolio Template">
+      <div class="portfolio-overlay">
+        <h3>Portfolio Template</h3>
+        <a href="file:///C:/Users/user/OneDrive/Desktop/HTML-CSS/CYBERSUCERITY.HTML" class="view-btn" target="_blank">View Project</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Project Modals -->
+  <div id="modern-business" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <div class="project-header">
+        <h2>Modern Business Template</h2>
+        <p>A sleek, responsive template for professional businesses</p>
+      </div>
+      <img src="photos/HSN.jpg" alt="Modern Business Template" class="project-image">
+      <div class="project-details">
+        <div class="project-description">
+          <h3>Project Description</h3>
+          <p>This modern business template was designed with corporate clients in mind. It features a clean layout, responsive design, and customizable sections to showcase services, team members, and testimonials.</p>
+        </div>
+        <div class="project-features">
+          <h3>Key Features</h3>
+          <ul>
+            <li>Fully responsive design</li>
+            <li>SEO optimized structure</li>
+            <li>Easy-to-customize color scheme</li>
+            <li>Interactive elements</li>
+            <li>Fast loading performance</li>
+          </ul>
+        </div>
+        <div class="project-technologies">
+          <h3>Technologies Used</h3>
+          <ul>
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+            
+          </ul>
+        </div>
+      </div>
+      <div class="project-actions">
+        <a href="#" class="project-btn primary-btn">Purchase Template</a>
+        <a href="#" class="project-btn secondary-btn">View Live Demo</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="ecommerce-theme" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <div class="project-header">
+        <h2>E-commerce Theme</h2>
+        <p>A complete shopping solution for online stores</p>
+      </div>
+      <img src="https://via.placeholder.com/800x500" alt="E-commerce Theme" class="project-image">
+      <div class="project-details">
+        <div class="project-description">
+          <h3>Project Description</h3>
+          <p>This e-commerce theme includes all the essential pages for an online store - product listings, detailed product pages, shopping cart, and checkout process. The design is optimized for conversions.</p>
+        </div>
+        <div class="project-features">
+          <h3>Key Features</h3>
+          <ul>
+            <li>Product catalog with filtering</li>
+            <li>Responsive product grids</li>
+            <li>Shopping cart functionality</li>
+            <li>Checkout process</li>
+            <li>Customer account pages</li>
+          </ul>
+        </div>
+        <div class="project-technologies">
+          <h3>Technologies Used</h3>
+          <ul>
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+          
+          </ul>
+        </div>
+      </div>
+      <div class="project-actions">
+        <a href="#" class="project-btn primary-btn">Purchase Theme</a>
+        <a href="#" class="project-btn secondary-btn">View Live Demo</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="portfolio-template" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <div class="project-header">
+        <h2>Portfolio Template</h2>
+        <p>Showcase your work in style</p>
+      </div>
+      <img src="https://via.placeholder.com/800x500" alt="Portfolio Template" class="project-image">
+      <div class="project-details">
+        <div class="project-description">
+          <h3>Project Description</h3>
+          <p>This portfolio template is perfect for creatives, designers, and photographers. It features a masonry grid layout, project filtering, and elegant project detail pages to showcase your work effectively.</p>
+        </div>
+        <div class="project-features">
+          <h3>Key Features</h3>
+          <ul>
+            <li>Masonry grid layout</li>
+            <li>Project filtering system</li>
+            <li>Responsive image gallery</li>
+            <li>Lightbox for images</li>
+            <li>Contact form integration</li>
+          </ul>
+        </div>
+        <div class="project-technologies">
+          <h3>Technologies Used</h3>
+          <ul>
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+           
+          </ul>
+        </div>
+      </div>
+      <div class="project-actions">
+        <a href="#" class="project-btn primary-btn">Purchase Template</a>
+        <a href="#" class="project-btn secondary-btn">View Live Demo</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="testimonials">
+    <h2>Client Testimonials</h2>
+    <div class="testimonials">
+      <div class="testimonial-card animate-fade">
+        <div class="quote">"Hassan's templates transformed our online presence! The quality and attention to detail are exceptional."</div>
+        <div class="client-info">
+          <img src="photos/screenshot 2025-04-10-191511.png" alt="Client" class="client-img">
+          <div>
+            <h4>Sarah Johnson</h4>
+            <p>CEO, TechSolutions</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card animate-fade delay-1">
+        <div class="quote">"Working with Hassan was a pleasure. The templates were delivered on time and exceeded our expectations."</div>
+        <div class="client-info">
+          <img src="https://via.placeholder.com/50" alt="Client" class="client-img">
+          <div>
+            <h4>Michael Brown</h4>
+            <p>Marketing Director</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card animate-fade delay-2">
+        <div class="quote">"The custom theme Hassan created for us helped increase our conversion rate by 30%. Highly recommended!"</div>
+        <div class="client-info">
+          <img src="https://via.placeholder.com/50" alt="Client" class="client-img">
+          <div>
+            <h4>Emily Davis</h4>
+            <p>E-commerce Manager</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <h2>Pricing Plans</h2>
+    <div class="pricing-cards">
+      <div class="pricing-card animate-fade">
+        <h3>Basic</h3>
+        <div class="price">$49<span>/template</span></div>
+        <ul>
+          <li>Responsive Design</li>
+          <li>Basic Customization</li>
+          <li>Email Support</li>
+          <li>1 Month Updates</li>
+        </ul>
+        <button class="btn">Get Started</button>
+      </div>
+      <div class="pricing-card animate-fade delay-1">
+        <h3>Standard</h3>
+        <div class="price">$89<span>/template</span></div>
+        <ul>
+          <li>All Basic Features</li>
+          <li>Advanced Customization</li>
+          <li>Priority Support</li>
+          <li>2 Months Updates</li>
+          <li>SEO Optimization</li>
+        </ul>
+        <button class="btn">Get Started</button>
+      </div>
+      <div class="pricing-card animate-fade delay-2">
+        <h3>Premium</h3>
+        <div class="price">$150<span>/template</span></div>
+        <ul>
+          <li>All Standard Features</li>
+          <li>Full Custom Development</li>
+          <li>24/7 Support</li>
+          <li>3 Months Updates</li>
+          <li>Performance Optimization</li>
+          <li>Lifetime License</li>
+        </ul>
+        <button class="btn">Get Started</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Technologies We Use</h2>
+    <div class="skills-grid">
+      <div class="skill-item animate-fade">
+        <i class="fab fa-html5"></i>
+        <span>HTML5</span>
+      </div>
+      <div class="skill-item animate-fade delay-1">
+        <i class="fab fa-css3-alt"></i>
+        <span>CSS3</span>
+      </div>
+           </div>
+      <div class="skill-item animate-fade delay-2">
+        <i class="fab fa-react"></i>
+        <span>React</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="stats">
+    <h2>By The Numbers</h2>
+    <div class="stats">
+      <div class="stat-item animate-fade">
+        <div class="stat-number">50+</div>
+        <div class="stat-label">Templates Created</div>
+      </div>
+      <div class="stat-item animate-fade delay-1">
+        <div class="stat-number">98%</div>
+        <div class="stat-label">Client Satisfaction</div>
+      </div>
+      <div class="stat-item animate-fade delay-2">
+        <div class="stat-number">15+</div>
+        <div class="stat-label">Happy Clients</div>
+      </div>
+      <div class="stat-item animate-fade delay-3">
+        <div class="stat-number">2</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>Hassan Designs specializes in creating high-quality HTML/CSS templates and themes for businesses and individuals. With a focus on clean code, modern design, and responsiveness, we help our clients establish a strong online presence.</p>
+    <p>Founded by Hassan Yagoub, our company is dedicated to providing affordable web solutions without compromising on quality. We believe in creating products that are not only visually appealing but also perform exceptionally well across all devices.</p>
+  </section>
+
+  <section id="newsletter">
+    <div class="newsletter-container animate-fade">
+      <h3>Subscribe to Our Newsletter</h3>
+      <p>Get updates on new templates, special offers, and web design tips</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Your email address" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Information</h2>
+    <div class="contact-info">
+      <p><strong>Owner:</strong> Hassan Yagoub</p>
+      <p><strong>Email:</strong> <a href="mailto:hy07my@gmail.com">hy07my@gmail.com</a></p>
+      <p><strong>Location:</strong> Glasgow City, UK</p>
+      <p><strong>Services:</strong> Custom HTML/CSS templates, website themes</p>
+    </div>
+    
+    <div class="text-center mb-4">
+      <h3 class="fw-bold">Get In Touch</h3>
+      <p class="text-muted">Reach out for a consultation</p>
+    </div>
+    <div class="service-card">
+      <form action="https://formsubmit.co/hy07my@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New message from Hassan Designs">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+        
+        <div class="mb-3">
+          <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+        </div>
+        <div class="mb-3">
+          <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+        </div>
+        <div class="mb-3">
+          <select name="service" class="form-select" required>
+            <option value="">Select Service</option>
+            <option>Website Template</option>
+            <option>Theme Design</option>
+            <option>Custom Development</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <textarea name="message" class="form-control" rows="5" placeholder="Your Message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2025 Hassan Designs. All rights reserved.</p>
+    <div class="social-links" style="justify-content: center; margin-top: 1rem;">
+      <a href="https://Instagram.com/hsn07n" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+      <a href="#" aria-label="Codepen"><i class="fab fa-codepen"></i></a>
+    </div>
+  </div>
+</footer>
+
+<button id="darkModeToggle" class="dark-mode-toggle">
+  <i class="fas fa-moon"></i> Dark Mode
+</button>
+
+<button class="scroll-to-top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+  // Dark Mode Toggle
+  const darkModeToggle = document.getElementById('darkModeToggle');
+  const body = document.body;
+  const icon = darkModeToggle.querySelector('i');
+  
+  // Check for saved user preference or use system preference
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const currentTheme = localStorage.getItem('theme');
+  
+  if (currentTheme === 'dark' || (!currentTheme && prefersDark)) {
+    body.setAttribute('data-theme', 'dark');
+    icon.classList.replace('fa-moon', 'fa-sun');
+    darkModeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+  }
+  
+  darkModeToggle.addEventListener('click', () => {
+    const isDark = body.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      body.removeAttribute('data-theme');
+      icon.classList.replace('fa-sun', 'fa-moon');
+      darkModeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+      localStorage.setItem('theme', 'light');
+    } else {
+      body.setAttribute('data-theme', 'dark');
+      icon.classList.replace('fa-moon', 'fa-sun');
+      darkModeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+  
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+  
+  // Scroll to top button
+  const scrollToTopBtn = document.querySelector('.scroll-to-top');
+  
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      scrollToTopBtn.style.display = 'flex';
+    } else {
+      scrollToTopBtn.style.display = 'none';
+    }
+  });
+  
+  scrollToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+  
+  // Newsletter form handling
+  const newsletterForm = document.querySelector('.newsletter-form');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = this.querySelector('input').value;
+      // Here you would typically send the email to your mailing list service
+      alert('Thank you for subscribing! You will receive our newsletter at ' + email);
+      this.reset();
+    });
+  }
+  
+  // Project Modal functionality
+  const projectLinks = document.querySelectorAll('.project-link');
+  const modals = document.querySelectorAll('.modal');
+  const closeBtns = document.querySelectorAll('.close-btn');
+  
+  projectLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const modalId = this.getAttribute('href');
+      document.querySelector(modalId).style.display = 'block';
+      document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+    });
+  });
+  
+  closeBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      this.closest('.modal').style.display = 'none';
+      document.body.style.overflow = 'auto'; // Re-enable scrolling
+    });
+  });
+  
+  // Close modal when clicking outside of it
+  window.addEventListener('click', function(e) {
+    if (e.target.classList.contains('modal')) {
+      e.target.style.display = 'none';
+      document.body.style.overflow = 'auto'; // Re-enable scrolling
+    }
+  });
+  
+  // Animation on scroll
+  const animateElements = document.querySelectorAll('.animate-fade');
+  
+  const animateOnScroll = () => {
+    animateElements.forEach(element => {
+      const elementPosition = element.getBoundingClientRect().top;
+      const screenPosition = window.innerHeight / 1.3;
+      
+      if (elementPosition < screenPosition) {
+        element.style.animationPlayState = 'running';
+      }
+    });
+  };
+  
+  window.addEventListener('scroll', animateOnScroll);
+  window.addEventListener('load', animateOnScroll);
+</script>
+</body>
+</html>
